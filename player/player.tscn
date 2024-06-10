@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxjh20manxmfw"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_uvgsh"]
+[ext_resource type="Texture2D" uid="uid://cbv6350sgf4sm" path="res://icon.svg" id="1_xdg4h"]
+[ext_resource type="Texture2D" uid="uid://dfkwkpsgw3cm5" path="res://interact_square.svg" id="3_7ertp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5a41"]
+radius = 63.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("interact_square")]
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+script = ExtResource("1_uvgsh")
+interact_square = NodePath("Interact Square")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xdg4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a5a41")
+
+[node name="Interact Square" type="Sprite2D" parent="."]
+texture = ExtResource("3_7ertp")

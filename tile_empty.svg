@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256.00003"
+   height="256"
+   viewBox="0 0 67.73334 67.733333"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="tile_empty.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="341.88613"
+     inkscape:cy="222.03153"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Lager 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-41.200237,-69.861282)">
+    <rect
+       style="fill:#333333;stroke-width:0.329094;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.682353;paint-order:markers fill stroke"
+       id="rect234"
+       width="33.866665"
+       height="33.866665"
+       x="41.200241"
+       y="69.861282" />
+    <rect
+       style="fill:#e6e6e6;stroke-width:0.329094;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.682353;paint-order:markers fill stroke"
+       id="rect290"
+       width="33.866665"
+       height="33.866665"
+       x="75.06691"
+       y="69.861282" />
+    <rect
+       style="fill:#333333;stroke-width:0.329094;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.682353;paint-order:markers fill stroke"
+       id="rect670"
+       width="33.866665"
+       height="33.866665"
+       x="-108.93357"
+       y="103.72795"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#e6e6e6;stroke-width:0.329094;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.682353;paint-order:markers fill stroke"
+       id="rect672"
+       width="33.866665"
+       height="33.866665"
+       x="-75.066902"
+       y="103.72795"
+       transform="scale(-1,1)" />
+  </g>
+</svg>
