@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bc8k3l73dosow"]
+
+[ext_resource type="Texture2D" uid="uid://dsesgc082ca48" path="res://gfx/pickaxe.svg" id="1_3bf3l"]
+[ext_resource type="Script" path="res://data/Item.gd" id="1_8s4pl"]
+
+[resource]
+script = ExtResource("1_8s4pl")
+name = ""
+inventory_icon = ExtResource("1_3bf3l")

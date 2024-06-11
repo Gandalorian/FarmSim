@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://buqv46misrxed"]
+[gd_scene load_steps=6 format=3 uid="uid://buqv46misrxed"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_s4nf4"]
 [ext_resource type="TileSet" uid="uid://bi8obue1j0mcc" path="res://tiles/tileset.tres" id="1_wfaui"]
 [ext_resource type="PackedScene" uid="uid://cxjh20manxmfw" path="res://player/player.tscn" id="2_lih03"]
+[ext_resource type="PackedScene" uid="uid://p0svome4w4c2" path="res://scenes/ui elements/action_bar.tscn" id="4_e54y8"]
 [ext_resource type="Texture2D" uid="uid://bhsemaceto3g7" path="res://gfx/ui-elements.svg" id="6_kxxc5"]
 
 [node name="World" type="Node2D"]
@@ -24,6 +25,13 @@ position = Vector2(0, -2)
 world = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Action Bar" parent="Player" instance=ExtResource("4_e54y8")]
+unique_name_in_owner = true
+offset_left = -266.0
+offset_top = 482.0
+offset_right = 258.0
+offset_bottom = 610.0
 
 [node name="Interact Square" type="Sprite2D" parent="."]
 position = Vector2(111, 112)

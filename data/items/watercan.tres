@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c271j11rq5rux"]
+
+[ext_resource type="Texture2D" uid="uid://bbaxm62fecfoq" path="res://gfx/watercan.svg" id="1_7xwfr"]
+[ext_resource type="Script" path="res://data/Item.gd" id="1_hxq7d"]
+
+[resource]
+script = ExtResource("1_hxq7d")
+name = ""
+inventory_icon = ExtResource("1_7xwfr")

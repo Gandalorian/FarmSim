@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933333"
+   version="1.1"
+   id="svg9498"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="pickaxe.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview9500"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="5.9081369"
+     inkscape:cx="45.445799"
+     inkscape:cy="49.254106"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs9495" />
+  <g
+     inkscape:label="Lager 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g10632"
+       transform="matrix(1.4230954,0,0,1.4230954,-4.3972289,-3.2827122)">
+      <rect
+         style="fill:#a05a2c;stroke-width:0.177868;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+         id="rect9671"
+         width="1.2843531"
+         height="10.917002"
+         x="11.565172"
+         y="-4.6510105"
+         transform="rotate(45)" />
+      <path
+         id="path9777"
+         style="fill:#4d4d4d;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+         d="M 13.210121,5.2921812 A 5.6874242,5.6874242 0 0 0 5.2530451,4.1172562 5.6874242,5.6874242 0 0 0 4.3484671,4.9577152 5.6874242,5.6874242 0 0 1 12.283768,6.1475237 5.6874242,5.6874242 0 0 1 12.01508,13.262908 5.6874242,5.6874242 0 0 0 12.0352,13.249258 5.6874242,5.6874242 0 0 0 13.210125,5.2921822 Z" />
+    </g>
+  </g>
+</svg>
