@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_47odi")
-name = ""
+name = "Axe"
 inventory_icon = ExtResource("1_a2avc")

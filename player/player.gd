@@ -2,14 +2,19 @@ extends CharacterBody2D
 
 @export var SPEED = 200.0
 @export var world : Node2D
+@export var start_items: Array[Item]
 
 @onready var action_bar = $"Action Bar"
 
-@onready var current_action : int = 1
+var current_action : int = 1
+var current_tool: String
 var inventory : Inventory = Inventory.new()
 
 func _ready():
-	pass
+	for item in start_items:
+		inventory.add_item(item)
+	update_actionbar()
+	current_tool = inventory.get_item(0).name
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -27,3 +32,17 @@ func _physics_process(_delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+func update_actionbar():
+	for i in range(inventory.get_items().size()):
+		action_bar.setup_slot(i+1,inventory.get_item(i))
+	current_tool = inventory.get_item(current_action).name
+	
+func swap_action(index:int):
+	action_bar.toggle_slot(index)
+	current_action = index
+	var new_tool = inventory.get_item(index - 1)
+	if new_tool:
+		current_tool = new_tool.name
+	else:
+		current_tool = "null"

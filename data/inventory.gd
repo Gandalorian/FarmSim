@@ -10,3 +10,9 @@ func remove_item(item:Item):
 
 func get_items() -> Array[Item]:
 	return _content
+
+func get_item(index:int) -> Item:
+	if index < _content.size():
+		return _content[index]
+	else:
+		return null

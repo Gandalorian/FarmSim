@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3f462me0raw3"]
+[gd_scene load_steps=5 format=3 uid="uid://c3f462me0raw3"]
 
 [ext_resource type="Script" path="res://scripts/action_slot.gd" id="1_frpdf"]
 [ext_resource type="Texture2D" uid="uid://cbv6350sgf4sm" path="res://icon.svg" id="2_b8u87"]
+[ext_resource type="Texture2D" uid="uid://bffbs58gjfci3" path="res://gfx/empty.svg" id="2_fgpdv"]
 [ext_resource type="Texture2D" uid="uid://d1152lxf04ahe" path="res://gfx/redborder.svg" id="3_k6sqb"]
 
 [node name="Action Slot 1" type="PanelContainer"]
 script = ExtResource("1_frpdf")
+empty = ExtResource("2_fgpdv")
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 2

@@ -115,3 +115,15 @@ func toggle_slot(next:int):
 			slot7.toggle_selected(false)
 			slot8.toggle_selected(false)
 			slot9.toggle_selected(true)
+			
+func setup_slot(slot:int, item:Item):
+	match slot:
+		1: slot1.img.texture = item.inventory_icon
+		2: slot2.img.texture = item.inventory_icon
+		3: slot3.img.texture = item.inventory_icon
+		4: slot4.img.texture = item.inventory_icon
+		5: slot5.img.texture = item.inventory_icon
+		6: slot6.img.texture = item.inventory_icon
+		7: slot7.img.texture = item.inventory_icon
+		8: slot8.img.texture = item.inventory_icon
+		9: slot9.img.texture = item.inventory_icon

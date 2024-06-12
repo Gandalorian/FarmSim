@@ -1455,6 +1455,8 @@ texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/custom_data_0 = true
 0:1/0/custom_data_2 = true
+0:1/0/custom_data_3 = true
+1:1/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -1473,4 +1475,6 @@ custom_data_layer_1/name = "can_be_tilled"
 custom_data_layer_1/type = 1
 custom_data_layer_2/name = "can_be_untilled"
 custom_data_layer_2/type = 1
+custom_data_layer_3/name = "can_be_planted"
+custom_data_layer_3/type = 1
 sources/0 = SubResource("TileSetAtlasSource_t1qrp")

@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxjh20manxmfw"]
+[gd_scene load_steps=10 format=3 uid="uid://cxjh20manxmfw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uvgsh"]
 [ext_resource type="Texture2D" uid="uid://cbv6350sgf4sm" path="res://icon.svg" id="1_xdg4h"]
+[ext_resource type="Resource" uid="uid://b76xru7m0yfch" path="res://data/items/hoe.tres" id="2_56lg2"]
+[ext_resource type="Resource" uid="uid://c271j11rq5rux" path="res://data/items/watercan.tres" id="3_8axmu"]
 [ext_resource type="PackedScene" uid="uid://p0svome4w4c2" path="res://scenes/ui elements/action_bar.tscn" id="3_opnd5"]
+[ext_resource type="Resource" uid="uid://ckaoflvjjyvno" path="res://data/items/axe.tres" id="4_3dd3b"]
+[ext_resource type="Resource" uid="uid://bc8k3l73dosow" path="res://data/items/pickaxe.tres" id="5_12c3y"]
+[ext_resource type="Resource" uid="uid://dwqmcf0pmiume" path="res://data/items/seeds.tres" id="6_rjc51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5a41"]
 radius = 63.0
@@ -11,6 +16,7 @@ radius = 63.0
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
 script = ExtResource("1_uvgsh")
+start_items = Array[Resource("res://data/Item.gd")]([ExtResource("2_56lg2"), ExtResource("3_8axmu"), ExtResource("4_3dd3b"), ExtResource("5_12c3y"), ExtResource("6_rjc51")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xdg4h")
