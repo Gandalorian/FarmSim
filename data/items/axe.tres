@@ -7,3 +7,4 @@
 script = ExtResource("1_47odi")
 name = "Axe"
 inventory_icon = ExtResource("1_a2avc")
+type = 2

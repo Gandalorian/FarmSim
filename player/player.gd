@@ -7,14 +7,14 @@ extends CharacterBody2D
 @onready var action_bar = $"Action Bar"
 
 var current_action : int = 1
-var current_tool: String
+var current_tool: Item
 var inventory : Inventory = Inventory.new()
 
 func _ready():
 	for item in start_items:
 		inventory.add_item(item)
 	update_actionbar()
-	current_tool = inventory.get_item(0).name
+	current_tool = inventory.get_item(0)
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -36,13 +36,13 @@ func _physics_process(_delta):
 func update_actionbar():
 	for i in range(inventory.get_items().size()):
 		action_bar.setup_slot(i+1,inventory.get_item(i))
-	current_tool = inventory.get_item(current_action).name
+	current_tool = inventory.get_item(current_action)
 	
 func swap_action(index:int):
 	action_bar.toggle_slot(index)
 	current_action = index
 	var new_tool = inventory.get_item(index - 1)
 	if new_tool:
-		current_tool = new_tool.name
+		current_tool = new_tool
 	else:
-		current_tool = "null"
+		current_tool = null

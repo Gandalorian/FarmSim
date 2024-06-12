@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Seed" load_steps=3 format=3 uid="uid://s20jxp1asbl1"]
+
+[ext_resource type="Texture2D" uid="uid://dwwvblwqn44fq" path="res://gfx/seeds.svg" id="1_bkmjp"]
+[ext_resource type="Script" path="res://data/seed.gd" id="1_d006i"]
+
+[resource]
+script = ExtResource("1_d006i")
+days_until_harvest = 7
+cost = 10
+value = 20
+name = "Test seed"
+inventory_icon = ExtResource("1_bkmjp")
+type = 4

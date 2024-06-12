@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bi8obue1j0mcc"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bi8obue1j0mcc"]
 
 [ext_resource type="Texture2D" uid="uid://dpaehwjuyxgwp" path="res://tiles/tileset.svg" id="1_cuinh"]
+[ext_resource type="Resource" uid="uid://dwqmcf0pmiume" path="res://data/items/seeds.tres" id="1_yuar3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1qrp"]
 texture = ExtResource("1_cuinh")
@@ -1453,10 +1454,17 @@ texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 7:0/0/custom_data_1 = true
 0:1/0 = 0
-0:1/0/custom_data_0 = true
 0:1/0/custom_data_2 = true
 0:1/0/custom_data_3 = true
+0:1/0/custom_data_4 = true
 1:1/0 = 0
+1:1/0/custom_data_0 = true
+1:1/0/custom_data_6 = ExtResource("1_yuar3")
+0:2/0 = 0
+0:2/0/custom_data_2 = true
+0:2/0/custom_data_3 = true
+0:2/0/custom_data_4 = true
+0:2/0/custom_data_5 = true
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -1469,7 +1477,7 @@ terrain_set_0/terrain_2/name = "dirt_on_empty"
 terrain_set_0/terrain_2/color = Color(1, 0.812055, 0.946026, 1)
 terrain_set_0/terrain_3/name = "grass_on_empty"
 terrain_set_0/terrain_3/color = Color(0.859101, 0.561411, 1, 1)
-custom_data_layer_0/name = "can_place_seeds"
+custom_data_layer_0/name = "can_be_harvested"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "can_be_tilled"
 custom_data_layer_1/type = 1
@@ -1477,4 +1485,12 @@ custom_data_layer_2/name = "can_be_untilled"
 custom_data_layer_2/type = 1
 custom_data_layer_3/name = "can_be_planted"
 custom_data_layer_3/type = 1
+custom_data_layer_4/name = "can_be_watered"
+custom_data_layer_4/type = 1
+custom_data_layer_5/name = "watered"
+custom_data_layer_5/type = 1
+custom_data_layer_6/name = "planted_object"
+custom_data_layer_6/type = 24
+custom_data_layer_7/name = "days_planted"
+custom_data_layer_7/type = 2
 sources/0 = SubResource("TileSetAtlasSource_t1qrp")

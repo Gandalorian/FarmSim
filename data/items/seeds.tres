@@ -7,3 +7,4 @@
 script = ExtResource("1_fd053")
 name = "Seeds"
 inventory_icon = ExtResource("1_g68in")
+type = 4

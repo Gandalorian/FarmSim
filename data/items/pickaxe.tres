@@ -7,3 +7,4 @@
 script = ExtResource("1_8s4pl")
 name = "Pickaxe"
 inventory_icon = ExtResource("1_3bf3l")
+type = 3
