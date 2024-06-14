@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var world : Node2D
 @export var start_items: Array[Item]
 
-@onready var action_bar = $"Action Bar"
+@onready var action_bar = %"Action Bar"
 
 var current_action : int = 1
 var current_tool: Item
@@ -34,6 +34,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func update_actionbar():
+	print("update")
 	for i in range(inventory.get_items().size()):
 		action_bar.setup_slot(i+1,inventory.get_item(i))
 	current_tool = inventory.get_item(current_action)

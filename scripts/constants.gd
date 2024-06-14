@@ -1,7 +1,7 @@
 class_name Constants
 
 #Game constants
-const DAY_TIME_LIMIT: float = 2
+const DAY_TIME_LIMIT: float = 60
 
 #TileMap Layers
 const WATER_LAYER: int = 0

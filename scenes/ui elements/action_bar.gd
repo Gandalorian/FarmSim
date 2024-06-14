@@ -127,3 +127,6 @@ func setup_slot(slot:int, item:Item):
 		7: slot7.img.texture = item.inventory_icon
 		8: slot8.img.texture = item.inventory_icon
 		9: slot9.img.texture = item.inventory_icon
+
+func toggle_visible():
+	visible = not visible
