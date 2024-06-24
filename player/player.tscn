@@ -1,25 +1,810 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxjh20manxmfw"]
+[gd_scene load_steps=12 format=3 uid="uid://cxjh20manxmfw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uvgsh"]
-[ext_resource type="Texture2D" uid="uid://cbv6350sgf4sm" path="res://icon.svg" id="1_xdg4h"]
-[ext_resource type="Resource" uid="uid://b76xru7m0yfch" path="res://data/items/hoe.tres" id="2_56lg2"]
-[ext_resource type="Resource" uid="uid://c271j11rq5rux" path="res://data/items/watercan.tres" id="3_8axmu"]
-[ext_resource type="Resource" uid="uid://ckaoflvjjyvno" path="res://data/items/axe.tres" id="4_3dd3b"]
-[ext_resource type="Resource" uid="uid://bc8k3l73dosow" path="res://data/items/pickaxe.tres" id="5_12c3y"]
-[ext_resource type="Resource" uid="uid://dwqmcf0pmiume" path="res://data/items/seeds.tres" id="6_rjc51"]
+[ext_resource type="Texture2D" uid="uid://babcm48pimuiq" path="res://gfx/player.svg" id="2_v1wnw"]
+[ext_resource type="Script" path="res://scenes/ui.gd" id="3_l70yy"]
+[ext_resource type="Texture2D" uid="uid://bhsemaceto3g7" path="res://gfx/ui-elements.svg" id="4_2r7ma"]
+[ext_resource type="PackedScene" uid="uid://p0svome4w4c2" path="res://scenes/ui elements/action_bar.tscn" id="5_c22xj"]
+[ext_resource type="Script" path="res://scenes/ui elements/Inventory UI.gd" id="6_w3ehv"]
+[ext_resource type="Texture2D" uid="uid://b2i5wbtk2bm47" path="res://gfx/inventory-screen.svg" id="7_hscqh"]
+[ext_resource type="Script" path="res://scenes/ui elements/inventory_ui_slot.gd" id="8_kkrdy"]
+[ext_resource type="Texture2D" uid="uid://d1152lxf04ahe" path="res://gfx/redborder.svg" id="9_6aqbw"]
+[ext_resource type="Script" path="res://scenes/ui elements/DebugInfo.gd" id="10_bg5vc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5a41"]
-radius = 63.0
+radius = 24.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
+[node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_uvgsh")
-start_items = Array[Resource("res://data/Item.gd")]([ExtResource("2_56lg2"), ExtResource("3_8axmu"), ExtResource("4_3dd3b"), ExtResource("5_12c3y"), ExtResource("6_rjc51")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_xdg4h")
+texture = ExtResource("2_v1wnw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a5a41")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI Canvas Layer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_l70yy")
+
+[node name="Day Bar" type="ProgressBar" parent="UI Canvas Layer"]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 97.0
+offset_bottom = 50.0
+step = 0.1
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI Canvas Layer/Day Bar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Day Progress"
+
+[node name="Interact Square" type="Sprite2D" parent="UI Canvas Layer"]
+unique_name_in_owner = true
+position = Vector2(687, 436)
+texture = ExtResource("4_2r7ma")
+hframes = 13
+vframes = 13
+frame = 1
+
+[node name="Action Bar" parent="UI Canvas Layer" instance=ExtResource("5_c22xj")]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -316.0
+offset_top = -120.0
+offset_right = 826.92
+offset_bottom = 0.119995
+grow_vertical = 0
+scale = Vector2(0.560001, 0.560001)
+
+[node name="Inventory UI" type="Control" parent="UI Canvas Layer" node_paths=PackedStringArray("inventory_slots", "action_bar_slots")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -136.0
+offset_right = 288.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_w3ehv")
+inventory_slots = [NodePath("Inventory Slots/Inventory Slot 10"), NodePath("Inventory Slots/Inventory Slot 11"), NodePath("Inventory Slots/Inventory Slot 12"), NodePath("Inventory Slots/Inventory Slot 13"), NodePath("Inventory Slots/Inventory Slot 14"), NodePath("Inventory Slots/Inventory Slot 15"), NodePath("Inventory Slots/Inventory Slot 16"), NodePath("Inventory Slots/Inventory Slot 17"), NodePath("Inventory Slots/Inventory Slot 18"), NodePath("Inventory Slots/Inventory Slot 19"), NodePath("Inventory Slots/Inventory Slot 20"), NodePath("Inventory Slots/Inventory Slot 21"), NodePath("Inventory Slots/Inventory Slot 22"), NodePath("Inventory Slots/Inventory Slot 23"), NodePath("Inventory Slots/Inventory Slot 24"), NodePath("Inventory Slots/Inventory Slot 25"), NodePath("Inventory Slots/Inventory Slot 26"), NodePath("Inventory Slots/Inventory Slot 27"), NodePath("Inventory Slots/Inventory Slot 28"), NodePath("Inventory Slots/Inventory Slot 29"), NodePath("Inventory Slots/Inventory Slot 30"), NodePath("Inventory Slots/Inventory Slot 31"), NodePath("Inventory Slots/Inventory Slot 32"), NodePath("Inventory Slots/Inventory Slot 33"), NodePath("Inventory Slots/Inventory Slot 34"), NodePath("Inventory Slots/Inventory Slot 35"), NodePath("Inventory Slots/Inventory Slot 36")]
+action_bar_slots = [NodePath("Action Bar/Action Bar Slot 1"), NodePath("Action Bar/Action Bar Slot 2"), NodePath("Action Bar/Action Bar Slot 3"), NodePath("Action Bar/Action Bar Slot 4"), NodePath("Action Bar/Action Bar Slot 5"), NodePath("Action Bar/Action Bar Slot 6"), NodePath("Action Bar/Action Bar Slot 7"), NodePath("Action Bar/Action Bar Slot 8"), NodePath("Action Bar/Action Bar Slot 9")]
+
+[node name="Background" type="TextureRect" parent="UI Canvas Layer/Inventory UI"]
+custom_minimum_size = Vector2(576, 272)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -136.0
+offset_right = 288.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_hscqh")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Action Bar" type="GridContainer" parent="UI Canvas Layer/Inventory UI"]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.765
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+columns = 9
+metadata/_edit_use_anchors_ = true
+
+[node name="Action Bar Slot 1" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 1"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 2" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 2"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 3" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 3"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 4" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 4"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 5" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 4
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 5"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 6" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 5
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 6"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 7" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 6
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 7"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 8" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 7
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 8"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Action Bar Slot 9" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 8
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Action Bar/Action Bar Slot 9"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slots" type="GridContainer" parent="UI Canvas Layer/Inventory UI"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 9
+
+[node name="Inventory Slot 10" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 9
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 10"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 11" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 10
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 11"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 12" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 11
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 12"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 13" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 12
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 13"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 14" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 13
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 14"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 15" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 14
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 15"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 16" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 15
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 16"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 17" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 16
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 17"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 18" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 17
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 18"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 19" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 18
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 19"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 20" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 19
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 20"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 21" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 20
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 21"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 22" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 21
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 22"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 23" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 22
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 23"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 24" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 23
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 24"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 25" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 24
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 25"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 26" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 25
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 26"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 27" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 26
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 27"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 28" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 27
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 28"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 29" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 28
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 29"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 30" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 29
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 30"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 31" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 30
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 31"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 32" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 31
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 32"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 33" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 32
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 33"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 34" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 33
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 34"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 35" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 34
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 35"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="Inventory Slot 36" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("8_kkrdy")
+img = NodePath(".")
+inventory_index = 35
+
+[node name="TextureRect" type="TextureRect" parent="UI Canvas Layer/Inventory UI/Inventory Slots/Inventory Slot 36"]
+visible = false
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6aqbw")
+expand_mode = 2
+
+[node name="DebugInfo" type="PanelContainer" parent="UI Canvas Layer"]
+unique_name_in_owner = true
+visible = false
+offset_left = 900.0
+offset_top = 17.0
+offset_right = 1138.0
+offset_bottom = 624.0
+script = ExtResource("10_bg5vc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI Canvas Layer/DebugInfo"]
+layout_mode = 2
+
+[node name="Tile Map Position" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "Pos:
+"
+
+[node name="can_be_tilled" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "can_be_tilled"
+
+[node name="can_be_untilled" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "can_be_untilled"
+
+[node name="can_be_watered" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "can_be_watered
+"
+
+[node name="watered" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "watered
+"
+
+[node name="can_be_planted" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "can_be_planted"
+
+[node name="planted_object" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "planted_object"
+
+[node name="days_planted" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "days_planted
+"
+
+[node name="space" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="inventory_slot" type="Label" parent="UI Canvas Layer/DebugInfo/VBoxContainer"]
+layout_mode = 2
+text = "days_planted
+"
+
+[editable path="UI Canvas Layer/Action Bar"]

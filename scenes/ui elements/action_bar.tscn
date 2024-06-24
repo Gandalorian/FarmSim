@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://p0svome4w4c2"]
+[gd_scene load_steps=3 format=3 uid="uid://p0svome4w4c2"]
 
 [ext_resource type="PackedScene" uid="uid://c3f462me0raw3" path="res://scenes/ui elements/action_slot.tscn" id="1_fu1hx"]
 [ext_resource type="Script" path="res://scenes/ui elements/action_bar.gd" id="1_xrll6"]
-[ext_resource type="Resource" uid="uid://b76xru7m0yfch" path="res://data/items/hoe.tres" id="2_j5jf1"]
-[ext_resource type="Resource" uid="uid://c271j11rq5rux" path="res://data/items/watercan.tres" id="3_210uo"]
-[ext_resource type="Resource" uid="uid://ckaoflvjjyvno" path="res://data/items/axe.tres" id="4_81wf4"]
-[ext_resource type="Resource" uid="uid://bc8k3l73dosow" path="res://data/items/pickaxe.tres" id="5_kewu0"]
 
-[node name="Action Bar" type="PanelContainer" node_paths=PackedStringArray("slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9")]
+[node name="Action Bar" type="PanelContainer" node_paths=PackedStringArray("slots")]
 anchors_preset = -1
 anchor_left = -0.06
 anchor_top = -0.023
@@ -21,15 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_xrll6")
-slot1 = NodePath("HBoxContainer/Action Slot 1")
-slot2 = NodePath("HBoxContainer/Action Slot 2")
-slot3 = NodePath("HBoxContainer/Action Slot 3")
-slot4 = NodePath("HBoxContainer/Action Slot 4")
-slot5 = NodePath("HBoxContainer/Action Slot 5")
-slot6 = NodePath("HBoxContainer/Action Slot 6")
-slot7 = NodePath("HBoxContainer/Action Slot 7")
-slot8 = NodePath("HBoxContainer/Action Slot 8")
-slot9 = NodePath("HBoxContainer/Action Slot 9")
+slots = [NodePath("HBoxContainer/Action Slot 1"), NodePath("HBoxContainer/Action Slot 2"), NodePath("HBoxContainer/Action Slot 3"), NodePath("HBoxContainer/Action Slot 4"), NodePath("HBoxContainer/Action Slot 5"), NodePath("HBoxContainer/Action Slot 6"), NodePath("HBoxContainer/Action Slot 7"), NodePath("HBoxContainer/Action Slot 8"), NodePath("HBoxContainer/Action Slot 9")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -38,22 +26,18 @@ alignment = 1
 [node name="Action Slot 1" parent="HBoxContainer" instance=ExtResource("1_fu1hx")]
 layout_mode = 2
 size_flags_horizontal = 3
-item = ExtResource("2_j5jf1")
 
 [node name="Action Slot 2" parent="HBoxContainer" instance=ExtResource("1_fu1hx")]
 layout_mode = 2
 size_flags_horizontal = 3
-item = ExtResource("3_210uo")
 
 [node name="Action Slot 3" parent="HBoxContainer" instance=ExtResource("1_fu1hx")]
 layout_mode = 2
 size_flags_horizontal = 3
-item = ExtResource("4_81wf4")
 
 [node name="Action Slot 4" parent="HBoxContainer" instance=ExtResource("1_fu1hx")]
 layout_mode = 2
 size_flags_horizontal = 3
-item = ExtResource("5_kewu0")
 
 [node name="Action Slot 5" parent="HBoxContainer" instance=ExtResource("1_fu1hx")]
 layout_mode = 2

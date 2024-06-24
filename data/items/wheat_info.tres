@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConsumableInfo" load_steps=3 format=3 uid="uid://bqt3vrqi7fcm4"]
+
+[ext_resource type="Script" path="res://scripts/items/consumable_info.gd" id="1_45uo8"]
+[ext_resource type="Resource" uid="uid://ckwjkxwtgebc4" path="res://player/health.tres" id="2_cya1s"]
+
+[resource]
+script = ExtResource("1_45uo8")
+stat = ExtResource("2_cya1s")
+amount = 10
+time_limit = 0.0

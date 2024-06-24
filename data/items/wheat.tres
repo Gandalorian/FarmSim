@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://d18wjuvk5lmr2"]
+
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_1orj4"]
+[ext_resource type="Texture2D" uid="uid://i10txeen6obr" path="res://gfx/seeds and plants/wheat.svg" id="1_v2rvt"]
+
+[resource]
+script = ExtResource("1_1orj4")
+name = "Wheat"
+icon = ExtResource("1_v2rvt")
+max_count = 99
+type = 7

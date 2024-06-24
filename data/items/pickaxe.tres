@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bc8k3l73dosow"]
+[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://bc8k3l73dosow"]
 
-[ext_resource type="Texture2D" uid="uid://dsesgc082ca48" path="res://gfx/pickaxe.svg" id="1_3bf3l"]
-[ext_resource type="Script" path="res://data/Item.gd" id="1_8s4pl"]
+[ext_resource type="Texture2D" uid="uid://dsesgc082ca48" path="res://gfx/pickaxe.svg" id="1_hhovk"]
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="2_2683w"]
 
 [resource]
-script = ExtResource("1_8s4pl")
+script = ExtResource("2_2683w")
 name = "Pickaxe"
-inventory_icon = ExtResource("1_3bf3l")
-type = 3
+icon = ExtResource("1_hhovk")
+max_count = 1
+type = 6

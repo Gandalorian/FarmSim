@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c271j11rq5rux"]
+[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://c271j11rq5rux"]
 
-[ext_resource type="Texture2D" uid="uid://bbaxm62fecfoq" path="res://gfx/watercan.svg" id="1_7xwfr"]
-[ext_resource type="Script" path="res://data/Item.gd" id="1_hxq7d"]
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_ih8v8"]
+[ext_resource type="Texture2D" uid="uid://bbaxm62fecfoq" path="res://gfx/watercan.svg" id="1_nrlax"]
 
 [resource]
-script = ExtResource("1_hxq7d")
+script = ExtResource("1_ih8v8")
 name = "Water Can"
-inventory_icon = ExtResource("1_7xwfr")
+icon = ExtResource("1_nrlax")
+max_count = 1
 type = 1

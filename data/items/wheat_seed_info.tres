@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SeedInfo" load_steps=3 format=3 uid="uid://bi18svye2bn8n"]
+
+[ext_resource type="Script" path="res://scripts/items/seed_info.gd" id="1_8mnc6"]
+[ext_resource type="Resource" uid="uid://d18wjuvk5lmr2" path="res://data/items/wheat.tres" id="1_k61md"]
+
+[resource]
+script = ExtResource("1_8mnc6")
+grows_into = ExtResource("1_k61md")
+grows_into_amount = 8
+days_until_harvest = 5
+tile_data_requirements = {}

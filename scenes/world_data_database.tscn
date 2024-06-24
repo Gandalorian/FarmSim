@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtinfo1tf06qg"]
+
+[ext_resource type="Script" path="res://scenes/world_data_database.gd" id="1_0q47y"]
+
+[node name="World Data Database" type="Node2D"]
+script = ExtResource("1_0q47y")

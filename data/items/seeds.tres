@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dwqmcf0pmiume"]
+[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://crpbpey0afkod"]
 
-[ext_resource type="Script" path="res://data/Item.gd" id="1_fd053"]
-[ext_resource type="Texture2D" uid="uid://dwwvblwqn44fq" path="res://gfx/seeds.svg" id="1_g68in"]
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_oxqa2"]
+[ext_resource type="Texture2D" uid="uid://dwwvblwqn44fq" path="res://gfx/seeds and plants/seeds.svg" id="1_qfady"]
 
 [resource]
-script = ExtResource("1_fd053")
+script = ExtResource("1_oxqa2")
 name = "Seeds"
-inventory_icon = ExtResource("1_g68in")
-type = 4
+icon = ExtResource("1_qfady")
+max_count = 99
+type = 3

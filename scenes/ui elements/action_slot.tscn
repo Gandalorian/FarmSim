@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3f462me0raw3"]
+[gd_scene load_steps=6 format=3 uid="uid://c3f462me0raw3"]
 
 [ext_resource type="Script" path="res://scripts/action_slot.gd" id="1_frpdf"]
-[ext_resource type="Texture2D" uid="uid://cbv6350sgf4sm" path="res://icon.svg" id="2_b8u87"]
 [ext_resource type="Texture2D" uid="uid://bffbs58gjfci3" path="res://gfx/empty.svg" id="2_fgpdv"]
 [ext_resource type="Texture2D" uid="uid://d1152lxf04ahe" path="res://gfx/redborder.svg" id="3_k6sqb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wcjrk"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_jufr2"]
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Action Slot 1" type="PanelContainer"]
 script = ExtResource("1_frpdf")
@@ -11,13 +18,34 @@ empty = ExtResource("2_fgpdv")
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_b8u87")
+texture = ExtResource("2_fgpdv")
 
 [node name="Label" type="Label" parent="Image"]
 layout_mode = 1
 offset_right = 35.0
 offset_bottom = 35.0
+scale = Vector2(0.52, 0.52)
 text = "1"
+label_settings = SubResource("LabelSettings_wcjrk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemCount" type="Label" parent="Image"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -19.0
+offset_right = 8.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.68, 0.68)
+text = "99"
+label_settings = SubResource("LabelSettings_jufr2")
 horizontal_alignment = 1
 vertical_alignment = 1
 

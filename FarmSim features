@@ -1,0 +1,67 @@
+FarmSim features
+
+1. Inventory UI
+  a. Display Grid
+  b. Drag and drop to rearrange
+2. Shop UI
+  a. Display Grid/List
+  b. Select item to buy
+  c. Select amount to buy
+  d. Buy item -> Add to inventory
+3. Character Movement
+  a. WASD / arrow keys
+  b. left click / right click
+  c. options menu -> Escape?
+  d. inventory -> I?
+  e. map -> M?
+  f. social -> O?
+  g. interact / talk -> E?
+4. Action bar
+  a. toggle active action
+  b. 
+5. Item types -> item actions
+  a. Hoe
+  b. Water can
+  c. Seeds
+  d. Scythe
+  e. Axe
+  f. Pickaxe
+  g. Consumable
+  h. Fishing Rod
+  i. other?
+6. Tilemap
+7. TileData
+  a. use built in TileData? or make own TileData object?
+  b. can water -> bool
+  c. can till -> bool
+  d. can harvest -> bool
+  e. can axe -> bool
+  f. can mine -> bool
+  g. can plant -> bool
+  h. days planted -> int
+  i. grows into -> object? int(id)?
+  j. is watered -> bool
+  k. is tilled -> bool
+  l. can fish -> bool
+8. NPCs
+  a. Conversations
+  b. Quests
+  c. Shops
+  d. Romance / Relationships
+  e. Gifts
+  f. AI
+9. Story
+  a. Tutorial phase
+  b. Mid phase?
+  c. End phase?
+10. Items and database
+  a. Inventory
+  b. Inventory slots
+  c. Item
+  d. Item Base
+11. Character creation
+  a. Appearance
+  b. Likes / dislikes
+  c. difficulty?
+  d. profession?
+  

@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://bi8obue1j0mcc" path="res://tiles/tileset.tres" id="1_wfaui"]
 [ext_resource type="PackedScene" uid="uid://cxjh20manxmfw" path="res://player/player.tscn" id="2_lih03"]
 [ext_resource type="Texture2D" uid="uid://bhsemaceto3g7" path="res://gfx/ui-elements.svg" id="6_kxxc5"]
-[ext_resource type="Script" path="res://scenes/ui elements/inventory_ui_slot.gd" id="8_h7uwf"]
-[ext_resource type="Texture2D" uid="uid://d1152lxf04ahe" path="res://gfx/redborder.svg" id="9_nmjf4"]
+[ext_resource type="Script" path="res://scenes/ui elements/inventory_ui_slot.gd" id="8_qu3qp"]
+[ext_resource type="PackedScene" uid="uid://crv5symocn2nw" path="res://scenes/abstract_item.tscn" id="9_3608n"]
 [ext_resource type="PackedScene" uid="uid://p0svome4w4c2" path="res://scenes/ui elements/action_bar.tscn" id="10_xmhpd"]
 [ext_resource type="Script" path="res://scenes/ui elements/Inventory UI.gd" id="11_ajbmt"]
 [ext_resource type="Texture2D" uid="uid://b2i5wbtk2bm47" path="res://gfx/inventory-screen.svg" id="11_gpsw5"]
@@ -15,7 +15,6 @@
 script = ExtResource("1_s4nf4")
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2(592, 320)
 tile_set = ExtResource("1_wfaui")
 format = 2
 layer_0/name = "water"
@@ -27,20 +26,17 @@ layer_3/name = "above_above_ground"
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_lih03")]
-unique_name_in_owner = true
-position = Vector2(576, 328)
+position = Vector2(0, -2)
+scale = Vector2(1, 1)
 
-[node name="Camera2D2" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="UI" type="Control" parent="Player"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 44.0
 
 [node name="Day Bar" type="ProgressBar" parent="Player/UI"]
 unique_name_in_owner = true
@@ -85,681 +81,255 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.48, 0.48)
 
-[node name="Inventory UI" type="Control" parent="Player/UI" node_paths=PackedStringArray("inventory_slots", "action_bar_slots")]
+[node name="Inventory UI" type="Control" parent="Player/UI"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -288.0
-offset_top = -136.0
-offset_right = 288.0
-offset_bottom = 136.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("11_ajbmt")
-inventory_slots = [NodePath("Inventory Slots/Inventory Slot 10"), NodePath("Inventory Slots/Inventory Slot 11"), NodePath("Inventory Slots/Inventory Slot 12"), NodePath("Inventory Slots/Inventory Slot 13"), NodePath("Inventory Slots/Inventory Slot 14"), NodePath("Inventory Slots/Inventory Slot 15"), NodePath("Inventory Slots/Inventory Slot 16"), NodePath("Inventory Slots/Inventory Slot 17"), NodePath("Inventory Slots/Inventory Slot 18"), NodePath("Inventory Slots/Inventory Slot 19"), NodePath("Inventory Slots/Inventory Slot 20"), NodePath("Inventory Slots/Inventory Slot 21"), NodePath("Inventory Slots/Inventory Slot 22"), NodePath("Inventory Slots/Inventory Slot 23"), NodePath("Inventory Slots/Inventory Slot 24"), NodePath("Inventory Slots/Inventory Slot 25"), NodePath("Inventory Slots/Inventory Slot 26"), NodePath("Inventory Slots/Inventory Slot 27"), NodePath("Inventory Slots/Inventory Slot 28"), NodePath("Inventory Slots/Inventory Slot 29"), NodePath("Inventory Slots/Inventory Slot 30"), NodePath("Inventory Slots/Inventory Slot 31"), NodePath("Inventory Slots/Inventory Slot 32"), NodePath("Inventory Slots/Inventory Slot 33"), NodePath("Inventory Slots/Inventory Slot 34"), NodePath("Inventory Slots/Inventory Slot 35"), NodePath("Inventory Slots/Inventory Slot 36")]
-action_bar_slots = [NodePath("Action Bar/Action Bar Slot 1"), NodePath("Action Bar/Action Bar Slot 2"), NodePath("Action Bar/Action Bar Slot 3"), NodePath("Action Bar/Action Bar Slot 4"), NodePath("Action Bar/Action Bar Slot 5"), NodePath("Action Bar/Action Bar Slot 6"), NodePath("Action Bar/Action Bar Slot 7"), NodePath("Action Bar/Action Bar Slot 8"), NodePath("Action Bar/Action Bar Slot 9")]
 
 [node name="Background" type="TextureRect" parent="Player/UI/Inventory UI"]
-custom_minimum_size = Vector2(576, 272)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -288.0
-offset_top = -136.0
-offset_right = 288.0
-offset_bottom = 136.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+anchor_left = -7.25
+anchor_top = -3.3
+anchor_right = 7.15
+anchor_bottom = 3.5
+offset_left = 3.05176e-05
+offset_right = -3.05176e-05
+offset_bottom = -1.52588e-05
 texture = ExtResource("11_gpsw5")
-expand_mode = 1
-stretch_mode = 2
 
 [node name="Action Bar" type="GridContainer" parent="Player/UI/Inventory UI"]
 custom_minimum_size = Vector2(54, 54)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.765
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+anchor_left = -7.125
+anchor_top = 2.025
+anchor_right = 7.2
+anchor_bottom = 3.375
+offset_left = 3.05176e-05
+offset_bottom = -1.52588e-05
 theme_override_constants/h_separation = 10
 columns = 9
-metadata/_edit_use_anchors_ = true
 
-[node name="Action Bar Slot 1" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 1"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 2" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot2" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 1
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 2"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 3" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot3" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 2
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 3"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 4" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot4" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 3
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 4"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 5" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot5" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 4
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 5"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 6" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot6" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 5
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 6"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 7" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot7" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 6
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 7"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 8" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot8" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 7
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 8"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Action Bar Slot 9" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar" node_paths=PackedStringArray("img")]
+[node name="Action Bar Slot9" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 8
-
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Action Bar/Action Bar Slot 9"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
 
 [node name="Inventory Slots" type="GridContainer" parent="Player/UI/Inventory UI"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = -5.0
+anchor_left = -7.125
+anchor_top = -3.175
+anchor_right = 7.025
+anchor_bottom = 1.375
+offset_left = 3.05176e-05
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 9
 
-[node name="Inventory Slot 10" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 9
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 10"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 11" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect2" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 10
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 11"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 12" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect3" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 11
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 12"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 13" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect4" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 12
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 13"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 14" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect5" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 13
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 14"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 15" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect6" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 14
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 15"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 16" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect7" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 15
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 16"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 17" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect8" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 16
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 17"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 18" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect9" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 17
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 18"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 19" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect10" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 18
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 19"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 20" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect11" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 19
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 20"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 21" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect12" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 20
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 21"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 22" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect13" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 21
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 22"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 23" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect14" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 22
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 23"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 24" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect15" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 23
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 24"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 25" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect16" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 24
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 25"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 26" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect17" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 25
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 26"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 27" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect18" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 26
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 27"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 28" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect19" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 27
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 28"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 29" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect20" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 28
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 29"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 30" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect21" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 29
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 30"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 31" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect22" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 30
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 31"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 32" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect23" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 31
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 32"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 33" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect24" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 32
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 33"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 34" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect25" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 33
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 34"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 35" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect26" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 34
+script = ExtResource("8_qu3qp")
 
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 35"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
-
-[node name="Inventory Slot 36" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots" node_paths=PackedStringArray("img")]
+[node name="TextureRect27" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots"]
 custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 expand_mode = 1
-script = ExtResource("8_h7uwf")
-img = NodePath(".")
-inventory_index = 35
-
-[node name="TextureRect" type="TextureRect" parent="Player/UI/Inventory UI/Inventory Slots/Inventory Slot 36"]
-visible = false
-custom_minimum_size = Vector2(54, 54)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_nmjf4")
-expand_mode = 2
+script = ExtResource("8_qu3qp")
 
 [node name="DebugInfo" type="PanelContainer" parent="Player/UI"]
 unique_name_in_owner = true
@@ -810,13 +380,6 @@ layout_mode = 2
 text = "days_planted
 "
 
-[node name="space" type="Label" parent="Player/UI/DebugInfo/VBoxContainer"]
-layout_mode = 2
-
-[node name="inventory_slot" type="Label" parent="Player/UI/DebugInfo/VBoxContainer"]
-layout_mode = 2
-text = "days_planted
-"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="AbstractItem" parent="." instance=ExtResource("9_3608n")]
+position = Vector2(145, -79)
+scale = Vector2(0.5, 0.5)

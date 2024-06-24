@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://dvo3d0pwykkfw"]
+
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_dn15e"]
+[ext_resource type="Texture2D" uid="uid://bffbs58gjfci3" path="res://gfx/empty.svg" id="1_nmgtg"]
+
+[resource]
+script = ExtResource("1_dn15e")
+name = "Empty"
+icon = ExtResource("1_nmgtg")
+max_count = 1
+type = 9

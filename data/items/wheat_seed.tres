@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemBase" load_steps=4 format=3 uid="uid://bokeraku5xhem"]
+
+[ext_resource type="Texture2D" uid="uid://dwwvblwqn44fq" path="res://gfx/seeds and plants/seeds.svg" id="1_6gxt4"]
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_tibrq"]
+[ext_resource type="Resource" uid="uid://bi18svye2bn8n" path="res://data/items/wheat_seed_info.tres" id="2_8y44n"]
+
+[resource]
+script = ExtResource("1_tibrq")
+name = "Wheat seed"
+icon = ExtResource("1_6gxt4")
+item_info = ExtResource("2_8y44n")
+max_count = 99
+type = 3

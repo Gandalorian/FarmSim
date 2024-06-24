@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://d1aflpvysfo3c"]
+
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_mfekk"]
+[ext_resource type="Texture2D" uid="uid://cbv6350sgf4sm" path="res://icon.svg" id="1_qrdyh"]
+
+[resource]
+script = ExtResource("1_mfekk")
+name = "Scythe"
+icon = ExtResource("1_qrdyh")
+max_count = 1
+type = 2

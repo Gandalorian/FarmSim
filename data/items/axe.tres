@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ckaoflvjjyvno"]
+[gd_resource type="Resource" script_class="ItemBase" load_steps=3 format=3 uid="uid://ckaoflvjjyvno"]
 
-[ext_resource type="Script" path="res://data/Item.gd" id="1_47odi"]
-[ext_resource type="Texture2D" uid="uid://bradbe5lrkg8o" path="res://gfx/axe.svg" id="1_a2avc"]
+[ext_resource type="Script" path="res://scripts/items/item_base.gd" id="1_fyejo"]
+[ext_resource type="Texture2D" uid="uid://bradbe5lrkg8o" path="res://gfx/axe.svg" id="1_hd68i"]
 
 [resource]
-script = ExtResource("1_47odi")
+script = ExtResource("1_fyejo")
 name = "Axe"
-inventory_icon = ExtResource("1_a2avc")
-type = 2
+icon = ExtResource("1_hd68i")
+max_count = 1
+type = 5
